@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Remote Job Scraper</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Remote Job Scraper</h1>
+            <p>Find your next remote opportunity from We Work Remotely</p>
+        </header>
+
+        <form id="search-form">
+            <div class="search-box">
+                <input type="text" id="keyword-input" placeholder="Enter keyword (e.g. Python, React, Design)..." required>
+                <button type="submit">Search Jobs</button>
+            </div>
+        </form>
+
+        <div id="loading-container" class="hidden">
+            <div class="spinner"></div>
+            <p>Scraping job listings...</p>
+        </div>
+
+        <div id="results-container" class="hidden">
+            <div class="results-header">
+                <h2 id="results-count">0 Jobs Found</h2>
+            </div>
+            <div id="jobs-list" class="jobs-grid">
+                <!-- Job cards will be injected here -->
+            </div>
+        </div>
+
+        <div id="error-container" class="hidden">
+            <div class="error-card">
+                <p id="error-message">Something went wrong. Please try again.</p>
+            </div>
+        </div>
+    </div>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>

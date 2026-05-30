@@ -1,8 +1,6 @@
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, render_template
 from bs4 import BeautifulSoup
 import requests
-import csv
-import io
 
 app = Flask(__name__)
 
@@ -81,6 +79,10 @@ def scrape_jobs(keyword):
 
 @app.route('/')
 def home():
+    return render_template('index.html')
+
+@app.route('/api/jobs')
+def get_jobs():
     keyword = request.args.get('keyword', 'python')
     jobs = scrape_jobs(keyword)
     return jsonify({
