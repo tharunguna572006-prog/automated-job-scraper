@@ -1,19 +1,13 @@
-# Automated Job Scraper
+# Automated Job Scraper API
 
-A Python-based web scraper that extracts remote job listings from [We Work Remotely](https://weworkremotely.com/) and saves them to a CSV file.
+A Python-based web API that extracts remote job listings from [We Work Remotely](https://weworkremotely.com/) and returns them in JSON format. This project is configured to be hosted on Vercel as a Serverless Function.
 
 ## Features
 
-- **Keyword Search:** Search for jobs based on specific keywords (e.g., Python, Javascript, Ruby).
-- **Data Extraction:** Collects Job Title, Company Name, Category/Region, and Application Link.
-- **Duplicate Prevention:** Ensures that the same job listing is not saved multiple times.
-- **CSV Export:** Automatically saves the scraped data into `remote_jobs.csv` for easy analysis.
-
-## Prerequisites
-
-- Python 3.x
-- `requests` library
-- `beautifulsoup4` library
+- **Web API:** Access job listings via a simple URL.
+- **Keyword Search:** Search for jobs by passing a `keyword` query parameter.
+- **JSON Response:** Returns job data (Title, Company, Category, Apply Link) in a structured JSON format.
+- **Vercel Ready:** Optimized for deployment on Vercel using Flask.
 
 ## Installation
 
@@ -28,23 +22,26 @@ A Python-based web scraper that extracts remote job listings from [We Work Remot
    pip install -r requirements.txt
    ```
 
-## Usage
+## Local Usage
 
-Run the scraper from the command line:
+Run the Flask application locally:
 
 ```bash
-python scraper.py [keyword]
+python main.py
 ```
 
-Example:
-```bash
-python scraper.py javascript
-```
+Access the API at `http://127.0.0.1:5000/?keyword=python`.
 
-If no keyword is provided, it defaults to searching for "python" jobs. The results will be saved in `remote_jobs.csv`.
+## Deployment on Vercel
+
+This project is ready for Vercel. Simply push your changes to GitHub and connect your repository to Vercel. It will automatically detect `main.py` as the entrypoint.
+
+## API Endpoint
+
+- `GET /?keyword=[term]`
+- Default keyword: `python`
 
 ## Project Structure
 
-- `scraper.py`: The main Python script containing the scraping logic.
-- `requirements.txt`: List of Python dependencies.
-- `remote_jobs.csv`: The output file where job listings are stored.
+- `main.py`: The Flask application and scraping logic.
+- `requirements.txt`: List of Python dependencies (including `flask`).
